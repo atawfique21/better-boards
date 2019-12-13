@@ -37,15 +37,23 @@ h1, h2 {
 
 .add-button:hover, .back-button:hover {
   cursor: pointer;
-  background-color: rgba(50, 50, 50, 0.45);
+  background-color: rgba(50, 50, 50, 0.40);
 }
 
 .board-name {
-  background-color: rgba(50, 50, 50, 0.45);
+  background-color: rgba(50, 50, 50, 0.40);
   
 }
-/* 
+
 .center {
-  display: flex;
-  align-items: center;
-} */
+  margin-right: 6px;
+  margin-bottom: 3px;
+  font-weight: 500;
+}
+
+.lessthan {
+  margin-right: 7.5px;
+  margin-bottom: 1px;
+  font-size: 18px;
+  font-weight: 500;
+}
