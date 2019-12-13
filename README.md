@@ -74,7 +74,7 @@ _The **Trello clone** MVP will house one task board with basic funcationlity suc
 
 |    API     | Quality Docs? | Website       | Sample Query                            |
 | :--------: | :-----------: | :------------ | :-------------------------------------- |
-| OpenWeatheMap |      yes      | http://api.openweathermap.org/ | _https://i.imgur.com/KJfgys5.png_ |
+| OpenWeatherMap |      yes      | http://api.openweathermap.org/ | _https://i.imgur.com/KJfgys5.png_ |
 
 #### React Components
 
