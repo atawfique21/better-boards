@@ -1,9 +1,5 @@
 # **Trello Recreation**
 
-## Project Planning
-
-> The Project Planning section should be completed for your project pitch with instructors.
-
 ### Overview
 
 _**Trello** is a web-based Kanban-style list-making application. My project here involves recreating Trello in React.JS._
