@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Header from './Components/Header'
 import axios from 'axios'
+import Widget from './Components/Widget'
 
 class App extends Component {
   constructor(props) {
@@ -35,6 +36,7 @@ class App extends Component {
       <div className="App">
         <Header />
         <p>Testing</p>
+        <Widget icon={this.state.weatherData.icon} temp={this.state.weatherData.temp} />
       </div>
     );
   }
