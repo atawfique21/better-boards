@@ -58,3 +58,26 @@ h1, h2 {
   font-size: 18px;
   font-weight: 550;
 }
+
+.widget {
+  display: flex;
+  flex-direction: row;
+  background-color: rgba(50, 50, 50, 0.40);
+  width: fit-content;
+  height: fit-content;
+  padding: 3px 10px 3px 10px;
+  border-radius: 10px;
+  color: white;
+  font-size: 15px;
+  opacity: 80%;
+  transition: all 0.35s ease-in-out;
+  position: fixed;
+    bottom: 0;
+    right: 0;
+  margin: 15px;
+}
+
+.widget:hover {
+  opacity: 100%;
+  background-color: rgba(50, 50, 50, 0.45);
+}
