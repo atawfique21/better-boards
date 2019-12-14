@@ -6,6 +6,10 @@ _**Trello** is a web-based Kanban-style list-making application. My project here
 
 <br>
 
+### Extra To-Do (help needed!)
+- _Moving API call into own component_
+	- _Passing down ZIP Code & apikey Props and having that component update weatherData Object in App.Js state._
+
 ### Wireframes
 
 >Wireframes to display desktop, tablet and mobile views.
