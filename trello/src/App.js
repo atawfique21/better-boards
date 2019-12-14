@@ -3,6 +3,7 @@ import './App.css';
 import Header from './Components/Header'
 import axios from 'axios'
 import Widget from './Components/Widget'
+import Board from './Components/Board'
 
 class App extends Component {
   constructor(props) {
@@ -11,7 +12,20 @@ class App extends Component {
     this.state = {
       apikey: "5324aa7815ff9a187f7b56bc7b82b9a0",
       zipcode: "11432",
-      weatherData: {}
+      weatherData: {},
+      boards: [
+        {
+          name: "Not started",
+          tasks: [{
+            name: "Automate Sprinkler"
+          },
+          {
+            name: "Replace yard lights"
+          }]
+        },
+        { name: "Doing" },
+        { name: "Done" }
+      ]
     }
   }
 
@@ -24,7 +38,7 @@ class App extends Component {
         temp
       }
     })
-    console.log(this.state.weatherData)
+
   }
 
   componentDidMount() {
@@ -35,6 +49,11 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
+        <div className="board-wrapper">
+          {this.state.boards.map((board, key) =>
+            <Board name={board.name} />
+          )}
+        </div>
         <Widget icon={this.state.weatherData.icon} temp={this.state.weatherData.temp} />
       </div>
     );
