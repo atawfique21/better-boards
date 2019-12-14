@@ -22,17 +22,9 @@ _**Trello** is a web-based Kanban-style list-making application. My project here
 
 <br>
 
-<br>
+![Mobile Hero](https://i.imgur.com/9vvvMdm.jpg)
 
-![Tablet Data Index](https://i.imgur.com/9vvvMdm.jpg)
-
-- Tablet Data Index
-
-<br>
-
-![Mobile Data Index](https://i.imgur.com/9vvvMdm.jpg)
-
-- Mobile Data Index
+- Mobile Hero
 
 <br>
 
@@ -41,8 +33,6 @@ _**Trello** is a web-based Kanban-style list-making application. My project here
 <br>
 
 ### MVP
-
-> The Minimum Viable Product should be a well-planned and easily-communicated product, ensuring that the client's deliverable will be achievable and meet specifications within the time frame estimated.
 
 _The **Trello clone** MVP will house one task board with basic funcationlity such as adding new tasks to the board and rearranging tasks. The api call will also be part of the MVP which will display widgets (only one for mvp) that can be selected when creating the board._
 
@@ -107,19 +97,17 @@ _Component Breakdown_
 
 _Component Estimates_
 
-> Use this section to estimate the time necessary to build out each of the components you've described above.
-
 | Task                | Priority | Estimated Time | Time Invested | Actual Time |
 | ------------------- | :------: | :------------: | :-----------: | :---------: |
-| Header              |    L     |     1/2 hrs    |     TBD       |     TBD     |
+| Header              |    L     |     1/2 hrs    |     3.5 hrs       |     3.5 hrs     |
 | Widget              |    M     |     1   hrs    |     TBD       |     TBD     |
 | Board               |    H     |     2 hrs      |     TBD       |     TBD     |
 | Footer              |    L     |     1/2 hrs    |     TBD       |     TBD     |
 | Add Task            |    M     |     1.5 hrs    |     TBD       |     TBD     |
 |  Task               |    H     |     2   hrs    |     TBD       |     TBD     |
-| TOTAL               |          |     7.5 hrs    |     TBD       |     TBD     |
-> _Why is this necessary? Time frames are key to the development cycle. You have limited time to code your app, and your estimates can then be used to evalute possibilities of your MVP and post-MVP based on time needed. It's best you assume an additional hour for each component, as well as a few hours added to the total time, to play it safe._
-**side note, I am underestimating this to the max lol.**
+| TOTAL               |          |     7.5 hrs    |     3.5 hrs       |     3.5 hrs     |
+
+**side note from past me, I am underestimating this to the max lol.**
 <br>
 
 ***
