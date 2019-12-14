@@ -34,12 +34,12 @@ h1, h2 {
   align-items: center;
   margin: 15px;
   font-weight: 600;
-  transition: all 0.25s ease-in-out;
+  transition: all 0.15s ease-in-out;
 }
 
 .add-button:hover, .back-button:hover {
   cursor: pointer;
-  background-color: rgba(50, 50, 50, 0.40);
+  background-color: rgba(50, 50, 50, 0.45);
 }
 
 .board-name {
@@ -62,7 +62,7 @@ h1, h2 {
 
 .widget {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   background-color: rgba(50, 50, 50, 0.40);
   width: fit-content;
   height: fit-content;
@@ -78,6 +78,26 @@ h1, h2 {
   margin: 0px 15px 15px 0px;
   z-index: 1;
   cursor: default;
+}
+
+.widget-name {
+  display: flex;
+  font-weight: 100;
+  font-size: 10px;
+  justify-content: center;
+  border-bottom: 1px solid whitesmoke;
+  margin-bottom: -5.5px;
+}
+
+.widget-name > p {
+  margin-bottom: -1.5px;
+}
+
+.widget-components {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
 
 .widget:hover {
