@@ -35,7 +35,6 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-        <p>Testing</p>
         <Widget icon={this.state.weatherData.icon} temp={this.state.weatherData.temp} />
       </div>
     );
