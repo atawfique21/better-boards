@@ -77,6 +77,9 @@ class App extends Component {
     this.setState({
       addTask: !this.state.addTask
     })
+    // setTimeout(() => {
+    //   document.getElementById("addtask").focus();
+    // }, 50);
   }
 
   onFormSubmit = (e, newTask) => {
