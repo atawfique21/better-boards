@@ -23,8 +23,14 @@ class App extends Component {
             name: "Replace yard lights"
           }]
         },
-        { name: "Doing" },
-        { name: "Done" }
+        {
+          name: "Doing",
+          tasks: null
+        },
+        {
+          name: "Done",
+          tasks: null
+        }
       ]
     }
   }
@@ -42,7 +48,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.apiCall()
+    // this.apiCall()
   }
 
   render() {
@@ -50,8 +56,8 @@ class App extends Component {
       <div className="App">
         <Header />
         <div className="board-wrapper">
-          {this.state.boards.map((board, key) =>
-            <Board name={board.name} />
+          {this.state.boards.map(board =>
+            <Board name={board.name} tasks={board.tasks} />
           )}
         </div>
         <Widget icon={this.state.weatherData.icon} temp={this.state.weatherData.temp} />

@@ -1,14 +1,18 @@
-html {
-  margin: 0;
+html, body {
   font-family: 'Merriweather Sans', sans-serif;
-}
-
-body {
   background-repeat: no-repeat;
   background-size: cover;
   background-image: linear-gradient(180deg, #3eb8de 0%, #347cdb 100%);
-  width: 100%;
+}
+
+html {
   height: 100%;
+}
+body {
+  height: 100%;
+  margin: 0;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 header {
