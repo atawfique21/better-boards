@@ -79,16 +79,21 @@ class App extends Component {
     })
   }
 
-  onFormSubmit(e, newTask) {
+  onFormSubmit = (e, newTask) => {
     e.preventDefault();
-    console.log(e.target.value)
+    newTask = { name: this.state.input }
+    let previous = this.state.boards[0].tasks
+    previous.unshift(newTask)
+    this.setState({
+      input: "",
+      addTask: false
+    })
   }
 
   handleChange = (e) => {
     this.setState({
       input: e.target.value
     })
-    console.log(this.state.input)
   }
 
   render() {
