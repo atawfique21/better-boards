@@ -82,6 +82,7 @@ h1, h2 {
   overflow-y: scroll;
   scrollbar-highlight-color: red;
   scrollbar-width: 100px;
+  opacity: 92%;
 }
 
 .outer-board {
@@ -131,6 +132,11 @@ Track
   margin: 15px;
   border-radius: 15px;
   cursor: grab;
+}
+
+.checklist {
+  font-size: 14px;
+  margin: 3px;
 }
 
 .widget {
