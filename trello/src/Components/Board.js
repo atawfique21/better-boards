@@ -1,5 +1,6 @@
 import React from 'react';
-import AddTask from './addTask';
+import AddTask from './AddTask';
+import DeleteTask from './DeleteTask'
 
 function Board(props) {
   return (
@@ -9,24 +10,28 @@ function Board(props) {
         {props.name === "Not started" ? (props.addTask && <div className="task"><AddTask onSubmit={props.onSubmit} onChange={props.handleChange} /></div>) : null}
         {props.tasks && props.tasks.map((task, key) =>
           <div key={key} className="task">
-            <p>{task.name}</p>
-            <div className="checklist-wrapper">
+            <div className="title-and-delete">
+              <div>{task.name}</div>
+              <DeleteTask handleClick={props.handleClick} />
+            </div>
+            {task.checkList && <div className="checklist-wrapper">
               {task.checkList && <h5 className="section-title">Checklist</h5>}
               {task.checkList && task.checkList.map((listItem, key) =>
                 <div className="checklist" key={key}>
                   <label><input type="checkbox" className="checkbox" />{listItem}</label>
                 </div>
               )}
-            </div>
+            </div>}
             {task.note &&
               <div className="note">
                 <h5 className="section-title">Notes</h5>
                 <p>{task.note}</p>
               </div>
             }
-          </div>)}
-      </div>
-    </div>
+          </div>)
+        }
+      </div >
+    </div >
   )
 }
 

@@ -96,6 +96,11 @@ class App extends Component {
     })
   }
 
+  handleClick = (e) => {
+    e.preventDefault();
+    console.log('hi')
+  }
+
   render() {
     return (
       <div className="App">
@@ -110,6 +115,7 @@ class App extends Component {
               addTask={this.state.addTask}
               onSubmit={this.onFormSubmit}
               handleChange={this.handleChange}
+              handleClick={this.handleClick}
             />
           )}
         </div>

@@ -88,7 +88,6 @@ h1, h2 {
 }
 
 .outer-board {
-  /* padding: 10px; */
   overflow: hidden;
   margin: 10px 5px 10px 10px;
   background-color: whitesmoke;
@@ -133,7 +132,14 @@ h1, h2 {
   padding: 15px;
   margin: 15px;
   border-radius: 15px;
-  cursor: grab;
+  /* cursor: grab; */
+  min-height: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+.task > div {
+  padding: 5px;
 }
 
 .checklist {
@@ -152,9 +158,9 @@ div.note, .checklist-wrapper {
   /* margin: -5px 0px; */
 }
 
-div.checklist-wrapper > input, div.checklist-wrapper > h5 {
-  padding: 5px;
-}
+/* div.checklist-wrapper > input, div.checklist-wrapper > h5 {
+  padding: 2px;
+} */
 
 div.note > p, div.note > h5 {
   padding: 5px;
@@ -227,4 +233,9 @@ input.nameTask:hover, input.nameTask:focus {
 
 input.nameTask::placeholder {
   font-style: italic;
+}
+
+.title-and-delete {
+  display: flex;
+  justify-content: space-between;
 }
