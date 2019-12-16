@@ -19,6 +19,7 @@ class App extends Component {
           tasks: [{
             name: "Automate Sprinkler",
             checkList: ["Buy new automated sprinkler", "Hire someone to set it up"],
+            note: "Make sure to go to home-depot, they have sales on sprinklers."
           },
           {
             name: "Replace yard lights"
@@ -75,7 +76,7 @@ class App extends Component {
         <Header />
         <div className="board-wrapper">
           {this.state.boards.map(board =>
-            <Board name={board.name} tasks={board.tasks} checkList={board.checkList} />
+            <Board name={board.name} tasks={board.tasks} checkList={board.checkList} note={board.note} />
           )}
         </div>
         <Widget icon={this.state.weatherData.icon} temp={this.state.weatherData.temp} />

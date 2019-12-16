@@ -10,10 +10,14 @@ function Board(props) {
             <p>{task.name}</p>
             {task.checkList && task.checkList.map((listItem, key) =>
               <div className="checklist" key={key}>
-                {/* <input type="checkbox" /> <label>{listItem}</label> */}
                 <label><input type="checkbox" className="checkbox" />{listItem}</label>
               </div>
             )}
+            {task.note &&
+              <div className="note">
+                <p>{task.note}</p>
+              </div>
+            }
           </div>)}
       </div>
     </div>
