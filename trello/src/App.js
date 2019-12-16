@@ -30,8 +30,7 @@ class App extends Component {
           },
           {
             name: "Put up christmas decorations"
-          }
-          ]
+          }]
         },
         {
           name: "Doing",
