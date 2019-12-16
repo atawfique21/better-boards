@@ -21,6 +21,15 @@ class App extends Component {
           },
           {
             name: "Replace yard lights"
+          },
+          {
+            name: "Spray tick killer"
+          },
+          {
+            name: "Cut weeds"
+          },
+          {
+            name: "Powerwash drive-way"
           }]
         },
         {
@@ -29,7 +38,9 @@ class App extends Component {
         },
         {
           name: "Done",
-          tasks: null
+          tasks: [{
+            name: "Clean up grass"
+          }]
         }
       ]
     }
