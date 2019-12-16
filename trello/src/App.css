@@ -94,20 +94,21 @@ h1, h2 {
 
 /* width */
 .board::-webkit-scrollbar {
-  width: 5px;
+  width: 6.5px;
   background-color: transparent;
   left: -100px;
   overflow: hidden;
 }
 
-/* Track */
+Track
 ::-webkit-scrollbar-track {
   background: #f1f1f1; 
 }
  
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #888; 
+  background: rgba(136, 136, 136, 0.897);
+  border-radius: 30px; 
 }
 
 /* Handle on hover */
