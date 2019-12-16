@@ -13,13 +13,14 @@ class App extends Component {
       apikey: "5324aa7815ff9a187f7b56bc7b82b9a0",
       zipcode: "11432",
       weatherData: {},
+      addTask: false,
       boards: [
         {
           name: "Not started",
           tasks: [{
             name: "Automate Sprinkler",
             checkList: ["Buy new automated sprinkler", "Hire someone to set it up"],
-            note: "Make sure to go to home-depot, they have sales on sprinklers."
+            note: "Make sure to go to home-depot, they have sales on sprinklers from what I saw."
           },
           {
             name: "Replace yard lights"
@@ -70,13 +71,30 @@ class App extends Component {
     this.apiCall()
   }
 
+  onButtonClick = (e) => {
+    e.preventDefault();
+    this.setState({
+      addTask: !this.state.addTask
+    })
+  }
+
+  onFormSubmit(e, newTask) {
+
+  }
+
   render() {
     return (
       <div className="App">
-        <Header />
+        <Header onButtonClick={this.onButtonClick} />
         <div className="board-wrapper">
           {this.state.boards.map(board =>
-            <Board name={board.name} tasks={board.tasks} checkList={board.checkList} note={board.note} />
+            <Board
+              name={board.name}
+              tasks={board.tasks}
+              checkList={board.checkList}
+              note={board.note}
+              addTask={this.state.addTask}
+            />
           )}
         </div>
         <Widget icon={this.state.weatherData.icon} temp={this.state.weatherData.temp} />

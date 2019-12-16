@@ -38,6 +38,7 @@ h1, h2 {
   margin: 15px;
   font-weight: 600;
   transition: all 0.15s ease-in-out;
+  user-select: none;
 }
 
 .add-button:hover, .back-button:hover {
@@ -77,6 +78,7 @@ h1, h2 {
   min-width: 500px;
   min-height: 500px;
   max-height: 500px;
+  max-width: 500px;
   border-radius: 15px;
   box-shadow: 0px 0px 20px 5px rgba(50, 50, 50, 0.25);
   overflow-y: scroll;
@@ -101,7 +103,7 @@ h1, h2 {
   overflow: hidden;
 }
 
-Track
+/* Track */
 ::-webkit-scrollbar-track {
   background: #f1f1f1; 
 }
@@ -136,7 +138,31 @@ Track
 
 .checklist {
   font-size: 14px;
-  margin: 3px;
+  margin: 1px;
+}
+
+.section-title {
+  margin-bottom: 7px;
+}
+
+div.note, .checklist-wrapper {
+  /* background-color:rgb(228, 222, 222); */
+  padding: 0px;
+  border-radius: 5px;
+  /* margin: -5px 0px; */
+}
+
+div.checklist-wrapper > input, div.checklist-wrapper > h5 {
+  padding: 5px;
+}
+
+div.note > p, div.note > h5 {
+  padding: 5px;
+}
+
+div.note > p {
+  margin-top: 0;
+  font-size: 14px;
 }
 
 .widget {
@@ -182,4 +208,10 @@ Track
   flex-direction: row;
   align-items: center;
   justify-content: center;
+}
+
+
+.nametask {
+  font-style: italic;
+  font-size: 14px;
 }
