@@ -12,7 +12,7 @@ function Board(props) {
           <div key={key} className="task">
             <div className="title-and-delete">
               <div>{task.name}</div>
-              <DeleteTask handleClick={props.handleClick} />
+              <DeleteTask handleClick={props.handleClick} task={task} />
             </div>
             {task.checkList && <div className="checklist-wrapper">
               {task.checkList && <h5 className="section-title">Checklist</h5>}

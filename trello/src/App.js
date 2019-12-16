@@ -69,7 +69,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.apiCall()
+    // this.apiCall()
   }
 
   onButtonClick = (e) => {
@@ -96,9 +96,19 @@ class App extends Component {
     })
   }
 
-  handleClick = (e) => {
+  handleClick = (e, sentTask) => {
     e.preventDefault();
-    console.log('hi')
+    console.log('hi');
+    const newTasks = this.state.boards.map((board) => {
+      return board.tasks.filter((item) =>
+        item.name !== sentTask.name
+      )
+    })
+    const updatedNewTasks = [{ name: "Not started", tasks: newTasks[0] }, { name: "Doing", tasks: newTasks[1] }, { name: "Done", tasks: newTasks[2] }]
+    console.log(updatedNewTasks)
+    this.setState({
+      boards: updatedNewTasks
+    })
   }
 
   render() {
