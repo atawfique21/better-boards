@@ -14,6 +14,7 @@ class App extends Component {
       zipcode: "11432",
       weatherData: {},
       addTask: false,
+      input: "",
       boards: [
         {
           name: "Not started",
@@ -79,7 +80,15 @@ class App extends Component {
   }
 
   onFormSubmit(e, newTask) {
+    e.preventDefault();
+    console.log(e.target.value)
+  }
 
+  handleChange = (e) => {
+    this.setState({
+      input: e.target.value
+    })
+    console.log(this.state.input)
   }
 
   render() {
@@ -94,6 +103,8 @@ class App extends Component {
               checkList={board.checkList}
               note={board.note}
               addTask={this.state.addTask}
+              onSubmit={this.onFormSubmit}
+              handleChange={this.handleChange}
             />
           )}
         </div>

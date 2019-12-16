@@ -6,7 +6,7 @@ function Board(props) {
     <div className="outer-board">
       <div className="board">
         <h3>{props.name}</h3>
-        {props.name === "Not started" ? (props.addTask && <div className="task"><AddTask /></div>) : null}
+        {props.name === "Not started" ? (props.addTask && <div className="task"><AddTask onSubmit={props.onSubmit} onChange={props.handleChange} /></div>) : null}
         {props.tasks && props.tasks.map((task, key) =>
           <div key={key} className="task">
             <p>{task.name}</p>
