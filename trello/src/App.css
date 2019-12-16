@@ -210,8 +210,21 @@ div.note > p {
   justify-content: center;
 }
 
+input.nameTask {
+  font-size: 16px;
+  font-family: 'Merriweather Sans', sans-serif;
+  border: transparent;
+  width: 100%;
+  border-radius: 5px;
+  padding: 1px;
+  outline: none;
+}
 
-.nametask {
+input.nameTask:hover, input.nameTask:focus {
+  background-color: rgba(220, 220, 220, 0.377);
+}
+
+
+input.nameTask::placeholder {
   font-style: italic;
-  font-size: 14px;
 }
