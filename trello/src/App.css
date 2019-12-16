@@ -73,12 +73,46 @@ h1, h2 {
 
 .board {
   color: black;
-  margin: 10px 5px 10px 10px;
   background-color: #e5f0f5;
   min-width: 500px;
   min-height: 500px;
+  max-height: 500px;
   border-radius: 15px;
   box-shadow: 0px 0px 20px 5px rgba(50, 50, 50, 0.25);
+  overflow-y: scroll;
+  scrollbar-highlight-color: red;
+  scrollbar-width: 100px;
+}
+
+.outer-board {
+  /* padding: 10px; */
+  overflow: hidden;
+  margin: 10px 5px 10px 10px;
+  background-color: whitesmoke;
+  border-radius: 20px;
+}
+
+/* width */
+.board::-webkit-scrollbar {
+  width: 5px;
+  background-color: transparent;
+  left: -100px;
+  overflow: hidden;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
 }
 
 .board > h3 {

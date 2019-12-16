@@ -26,15 +26,21 @@ class App extends Component {
             name: "Spray tick killer"
           },
           {
+            name: "Onion"
+          },
+          {
+            name: "Put up christmas decorations"
+          }
+          ]
+        },
+        {
+          name: "Doing",
+          tasks: [{
             name: "Cut weeds"
           },
           {
             name: "Powerwash drive-way"
           }]
-        },
-        {
-          name: "Doing",
-          tasks: null
         },
         {
           name: "Done",
