@@ -148,10 +148,55 @@ class App extends Component {
   }
 
   onDragEnd = result => {
-    // TODO: update later
+    // TODO: update 
+    const { destination, source, draggableId } = result;
+
+    if (!destination) {
+      return;
+    }
+
+    if (
+      destination.droppableId === source.droppableId &&
+      destination.index === source.index
+    ) {
+      return;
+    }
+
+    let board;
+    let oldBoards = [];
+
+    for (let i = 0; i < this.state.boards.length; i++) {
+      if (this.state.boards[i].id === source.droppableId) {
+        board = this.state.boards[i];
+      } else {
+        oldBoards.push(this.state.boards[i]);
+      }
+    }
+
+    const newTaskIds = Array.from(board.tasks)
+    newTaskIds.splice(source.index, 1);
+    newTaskIds.splice(destination.index, 0, draggableId);
+
+    // console.log(newTaskIds)
+    const newBoard = {
+      ...board,
+      tasks: newTaskIds
+    };
+
+
+    console.log(newBoard)
+
+    const boards = [newBoard, ...oldBoards];
+    const sortedBoards = boards.sort((a, b) => a.id.localeCompare(b.id));
+
+    this.setState({
+      boards
+    })
   }
 
   render() {
+
+
     return (
       <div className="App">
         <Header onButtonClick={this.onButtonClick} />
