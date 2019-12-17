@@ -1,7 +1,7 @@
 import React from 'react';
 import AddTask from './AddTask';
-import { Droppable } from 'react-beautiful-dnd'
-import Task from './Task'
+import Task from './Task';
+import { Droppable } from 'react-beautiful-dnd';
 
 function Board(props) {
   return (
@@ -13,7 +13,8 @@ function Board(props) {
             <div className="task">
               <AddTask onSubmit={props.onSubmit} onChange={props.handleChange} />
             </div>)
-          : null}
+          : null
+        }
         {props.tasks && props.tasks.map((task, key) =>
           <Task
             task={task}

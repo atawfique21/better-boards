@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import './App.css';
-import Header from './Components/Header'
-import axios from 'axios'
-import Widget from './Components/Widget'
-import Board from './Components/Board'
-import { DragDropContext } from 'react-beautiful-dnd'
+import Header from './Components/Header';
+import axios from 'axios';
+import Widget from './Components/Widget';
+import Board from './Components/Board';
+import { DragDropContext } from 'react-beautiful-dnd';
 
 class App extends Component {
   constructor(props) {
