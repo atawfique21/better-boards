@@ -132,7 +132,6 @@ h1, h2 {
   padding: 15px;
   margin: 15px;
   border-radius: 15px;
-  /* cursor: grab; */
   min-height: 30px;
   display: flex;
   flex-direction: column;
@@ -156,15 +155,9 @@ h5.section-title {
 }
 
 div.note, .checklist-wrapper {
-  /* background-color:rgb(228, 222, 222); */
   padding: 0px;
   border-radius: 5px;
-  /* margin: -5px 0px; */
 }
-
-/* div.checklist-wrapper > input, div.checklist-wrapper > h5 {
-  padding: 2px;
-} */
 
 div.note > p, div.note > h5 {
   padding: 5px;

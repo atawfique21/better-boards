@@ -32,6 +32,7 @@ function Board(props) {
                   divKey={key}
                   handleClick={props.handleClick}
                   handleAddNotes={props.handleAddNotes}
+                  handleAddChecklist={props.handleAddChecklist}
                 />
                 {provided.placeholder}
               </div>

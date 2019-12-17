@@ -112,18 +112,31 @@ class App extends Component {
 
   handleClick = (e, sentTask) => {
     e.preventDefault();
-    const newTasks = this.state.boards.map((board) => {
-      return board.tasks.filter((item) =>
-        item.name !== sentTask.name
-      )
-    })
-    const updatedNewTasks = [{ name: "Not started", tasks: newTasks[0] }, { name: "Doing", tasks: newTasks[1] }, { name: "Done", tasks: newTasks[2] }]
+    const newBoards = this.state.boards;
+
+    for (let i = 0; i < this.state.boards.length; i++) {
+      for (let k = 0; k < this.state.boards[i].tasks.length; k++) {
+        if (this.state.boards[i].tasks[k].name === sentTask.name) {
+          newBoards[i].tasks.splice(k, 1);
+        }
+      }
+    }
+
     this.setState({
-      boards: updatedNewTasks
+      boards: newBoards
     })
   }
 
-  handleAddNotes = (e) => {
+  handleAddNotes = (e, sentTask, newNote) => {
+    e.preventDefault()
+    const newTasks = this.state.boards.map((board) => {
+      return board.tasks.map((item) => {
+        if (item.name === sentTask.name) item.note = newNote;
+      })
+    })
+  }
+
+  handleAddChecklist = (e) => {
     e.preventDefault()
   }
 
@@ -152,6 +165,7 @@ class App extends Component {
                 handleChange={this.handleChange}
                 handleClick={this.handleClick}
                 handleAddNotes={this.handleAddNotes}
+                handleAddChecklist={this.handleAddChecklist}
               />
             )}
           </DragDropContext>
