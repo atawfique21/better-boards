@@ -3,44 +3,51 @@ import DeleteTask from './DeleteTask'
 import { Draggable } from 'react-beautiful-dnd'
 import AddDetails from './AddDetails'
 
-function Task(props) {
-  return (
-    <Draggable draggableId={props.id} index={props.index}>
-      {(provided, snapshot) => (
-        <div key={props.divKey}
-          className="task"
-          {...provided.draggableProps}
-          {...provided.dragHandleProps}
-          ref={provided.innerRef}
-        >
-          <div className="title-and-delete">
-            <div>{props.name}</div>
-            <DeleteTask handleClick={props.handleClick} task={props.task} />
+class Task extends React.Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      noteInput: ""
+    }
+  }
+
+  render() {
+    return (
+      <Draggable draggableId={this.props.id} index={this.props.index}>
+        {(provided, snapshot) => (
+          <div key={this.props.divKey}
+            className="task"
+            {...provided.draggableProps}
+            {...provided.dragHandleProps}
+            ref={provided.innerRef}
+          >
+            <div className="title-and-delete">
+              <div>{this.props.name}</div>
+              <DeleteTask handleClick={this.props.handleClick} task={this.props.task} />
+            </div>
+            {this.props.checkList &&
+              <div className="checklist-wrapper">
+                <h5 className="section-title">Checklist</h5>
+                {this.props.checkList.map((listItem, key) =>
+                  <div className="checklist" key={key}>
+                    <label><input type="checkbox" className="checkbox" />{listItem}</label>
+                  </div>
+                )}
+              </div>
+            }
+            {/* <AddDetails handleAddNotes={this.props.handleAddNotes} handleAddChecklist={this.props.handleAddChecklist} task={this.this.props.task} /> */}
+            {this.props.note &&
+              <div className="note">
+                <h5 className="section-title">Notes</h5>
+                <p>{this.props.note}</p>
+              </div>
+            }
           </div>
-          {props.checkList &&
-            <div className="checklist-wrapper">
-              <h5 className="section-title">Checklist</h5>
-              {props.checkList.map((listItem, key) =>
-                <div className="checklist" key={key}>
-                  <label><input type="checkbox" className="checkbox" />{listItem}</label>
-                </div>
-              )}
-            </div>
-          }
-          {!props.note && !props.checkList ?
-            <AddDetails handleAddNotes={props.handleAddNotes} handleAddChecklist={props.handleAddChecklist} />
-            : null
-          }
-          {props.note &&
-            <div className="note">
-              <h5 className="section-title">Notes</h5>
-              <p>{props.note}</p>
-            </div>
-          }
-        </div>
-      )}
-    </Draggable>
-  )
+        )}
+      </Draggable>
+    )
+  }
 }
 
 export default Task;
