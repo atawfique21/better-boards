@@ -15,6 +15,7 @@ class App extends Component {
       zipcode: "11432",
       weatherData: {},
       addTask: false,
+      currentTaskCounter: 8,
       input: "",
       boards: [
         {
@@ -95,12 +96,18 @@ class App extends Component {
 
   onFormSubmit = (e, newTask) => {
     e.preventDefault();
-    newTask = { name: this.state.input }
+    let counter = this.state.currentTaskCounter
+    counter++
+    newTask = {
+      name: this.state.input,
+      id: `task-${counter}`
+    }
     let previous = this.state.boards[0].tasks
     previous.unshift(newTask)
     this.setState({
       input: "",
-      addTask: false
+      addTask: false,
+      currentTaskCounter: counter
     })
   }
 
