@@ -18,37 +18,49 @@ class App extends Component {
       boards: [
         {
           name: "Not started",
+          id: "column-1",
           tasks: [{
             name: "Automate Sprinkler",
+            id: "task-1",
             checkList: ["Buy new automated sprinkler", "Hire someone to set it up"],
             note: "Make sure to go to home-depot, they have sales on sprinklers from what I saw."
           },
           {
-            name: "Replace yard lights"
+            name: "Replace yard lights",
+            id: "task-2"
           },
           {
-            name: "Spray tick killer"
+            name: "Spray tick killer",
+            id: "task-3",
+            note: "Be careful that the dog doesn't lick it up!"
           },
           {
-            name: "Onion"
+            name: "Onion",
+            id: "task-4"
           },
           {
-            name: "Put up christmas decorations"
+            name: "Put up christmas decorations",
+            id: "task-5"
           }]
         },
         {
           name: "Doing",
+          id: "column-2",
           tasks: [{
-            name: "Cut weeds"
+            name: "Cut weeds",
+            id: "task-6"
           },
           {
-            name: "Powerwash drive-way"
+            name: "Powerwash drive-way",
+            id: "task-7"
           }]
         },
         {
           name: "Done",
+          id: "column-3",
           tasks: [{
             name: "Clean up grass",
+            id: "task-8",
             checkList: ["Mow grass", "Put new seeds"]
           }]
         }
@@ -69,7 +81,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    // this.apiCall()
+    this.apiCall()
   }
 
   onButtonClick = (e) => {
