@@ -4,6 +4,7 @@ import Header from './Components/Header'
 import axios from 'axios'
 import Widget from './Components/Widget'
 import Board from './Components/Board'
+import { DragDropContext } from 'react-beautiful-dnd'
 
 class App extends Component {
   constructor(props) {
@@ -111,17 +112,19 @@ class App extends Component {
 
   handleClick = (e, sentTask) => {
     e.preventDefault();
-    console.log('hi');
     const newTasks = this.state.boards.map((board) => {
       return board.tasks.filter((item) =>
         item.name !== sentTask.name
       )
     })
     const updatedNewTasks = [{ name: "Not started", tasks: newTasks[0] }, { name: "Doing", tasks: newTasks[1] }, { name: "Done", tasks: newTasks[2] }]
-    console.log(updatedNewTasks)
     this.setState({
       boards: updatedNewTasks
     })
+  }
+
+  onDragEnd = result => {
+    // update later
   }
 
   render() {
@@ -129,18 +132,21 @@ class App extends Component {
       <div className="App">
         <Header onButtonClick={this.onButtonClick} />
         <div className="board-wrapper">
-          {this.state.boards.map(board =>
-            <Board
-              name={board.name}
-              tasks={board.tasks}
-              checkList={board.checkList}
-              note={board.note}
-              addTask={this.state.addTask}
-              onSubmit={this.onFormSubmit}
-              handleChange={this.handleChange}
-              handleClick={this.handleClick}
-            />
-          )}
+          <DragDropContext onDragEnd={this.onDragEnd}>
+            {this.state.boards.map(board =>
+              <Board
+                name={board.name}
+                key={board.id}
+                tasks={board.tasks}
+                checkList={board.checkList}
+                note={board.note}
+                addTask={this.state.addTask}
+                onSubmit={this.onFormSubmit}
+                handleChange={this.handleChange}
+                handleClick={this.handleClick}
+              />
+            )}
+          </DragDropContext>
         </div>
         <Widget icon={this.state.weatherData.icon} temp={this.state.weatherData.temp} />
       </div>
