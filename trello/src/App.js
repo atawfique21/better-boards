@@ -64,7 +64,8 @@ class App extends Component {
             checkList: ["Mow grass", "Put new seeds"]
           }]
         }
-      ]
+      ],
+      columnOrder: ["column-1", "column-2", "column-3"]
     }
   }
 
