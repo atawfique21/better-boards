@@ -31,6 +31,7 @@ function Board(props) {
                   note={task.note}
                   divKey={key}
                   handleClick={props.handleClick}
+                  handleAddNotes={props.handleAddNotes}
                 />
                 {provided.placeholder}
               </div>

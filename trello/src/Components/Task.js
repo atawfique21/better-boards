@@ -1,6 +1,7 @@
 import React from 'react'
 import DeleteTask from './DeleteTask'
 import { Draggable } from 'react-beautiful-dnd'
+import AddNotes from './AddNotes'
 
 function Task(props) {
   return (
@@ -26,6 +27,9 @@ function Task(props) {
               )}
             </div>
           }
+          {!props.note &&
+            <AddNotes handleAddNotes={props.handleAddNotes}
+            />}
           {props.note &&
             <div className="note">
               <h5 className="section-title">Notes</h5>

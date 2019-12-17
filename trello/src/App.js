@@ -123,6 +123,10 @@ class App extends Component {
     })
   }
 
+  handleAddNotes = (e) => {
+    e.preventDefault()
+  }
+
   onDragEnd = result => {
     // TODO: update later
   }
@@ -147,6 +151,7 @@ class App extends Component {
                 onSubmit={this.onFormSubmit}
                 handleChange={this.handleChange}
                 handleClick={this.handleClick}
+                handleAddNotes={this.handleAddNotes}
               />
             )}
           </DragDropContext>

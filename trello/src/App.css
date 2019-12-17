@@ -231,6 +231,13 @@ input.nameTask {
   outline: none;
 }
 
+input#addTask.nameTask {
+  display: flex;
+  align-self: center;
+  text-justify: center;
+  justify-content: center;
+}
+
 input.nameTask:hover, input.nameTask:focus {
   background-color: rgba(220, 220, 220, 0.377);
 }
@@ -244,3 +251,4 @@ input.nameTask::placeholder {
   display: flex;
   justify-content: space-between;
 }
+
