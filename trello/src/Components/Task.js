@@ -36,13 +36,13 @@ class Task extends React.Component {
                 )}
               </div>
             }
-            {/* <AddDetails handleAddNotes={this.props.handleAddNotes} handleAddChecklist={this.props.handleAddChecklist} task={this.this.props.task} /> */}
             {this.props.note &&
               <div className="note">
                 <h5 className="section-title">Notes</h5>
                 <p>{this.props.note}</p>
               </div>
             }
+            <AddDetails handleAddNotes={this.props.handleAddNotes} handleAddChecklist={this.props.handleAddChecklist} task={this.props.task} />
           </div>
         )}
       </Draggable>
