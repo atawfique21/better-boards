@@ -124,7 +124,7 @@ class App extends Component {
   }
 
   onDragEnd = result => {
-    // update later
+    // TODO: update later
   }
 
   render() {
@@ -132,11 +132,14 @@ class App extends Component {
       <div className="App">
         <Header onButtonClick={this.onButtonClick} />
         <div className="board-wrapper">
-          <DragDropContext onDragEnd={this.onDragEnd}>
-            {this.state.boards.map(board =>
+          <DragDropContext
+            onDragEnd={this.onDragEnd}
+          >
+            {this.state.boards.map((board, key) =>
               <Board
                 name={board.name}
-                key={board.id}
+                index={key}
+                id={board.id}
                 tasks={board.tasks}
                 checkList={board.checkList}
                 note={board.note}
@@ -148,7 +151,10 @@ class App extends Component {
             )}
           </DragDropContext>
         </div>
-        <Widget icon={this.state.weatherData.icon} temp={this.state.weatherData.temp} />
+        <Widget
+          icon={this.state.weatherData.icon}
+          temp={this.state.weatherData.temp}
+        />
       </div>
     );
   }

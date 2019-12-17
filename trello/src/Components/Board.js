@@ -5,7 +5,7 @@ import { Droppable } from 'react-beautiful-dnd';
 
 function Board(props) {
   return (
-    <div className="outer-board">
+    <div className="outer-board" key={props.index}>
       <div className="board">
         <h3>{props.name}</h3>
         {props.name === "Not started" ?
@@ -16,16 +16,28 @@ function Board(props) {
           : null
         }
         {props.tasks && props.tasks.map((task, key) =>
-          <Task
-            task={task}
-            name={task.name}
-            id={task.id}
-            checkList={task.checkList}
-            note={task.note}
-            divKey={key}
-            handleClick={props.handleClick}
-          />
+          < Droppable droppableId={props.id} >
+            {(provided, snapshot) => (
+              <div
+                ref={provided.innerRef}
+                {...provided.droppableProps}
+              >
+                <Task
+                  task={task}
+                  name={task.name}
+                  id={task.id}
+                  index={key}
+                  checkList={task.checkList}
+                  note={task.note}
+                  divKey={key}
+                  handleClick={props.handleClick}
+                />
+                {provided.placeholder}
+              </div>
+            )}
+          </Droppable>
         )}
+
       </div>
     </div >
   )
