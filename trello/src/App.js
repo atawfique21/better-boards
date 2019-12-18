@@ -157,7 +157,6 @@ class App extends Component {
 
   onDragStart = result => {
     let boardSelector = document.querySelectorAll("div.board")
-    console.log(boardSelector)
     for (var i = 0; i < boardSelector.length; i++) {
       boardSelector[i].classList.add('full');
     }
@@ -165,7 +164,6 @@ class App extends Component {
 
   onDragEnd = result => {
     let boardSelector = document.querySelectorAll("div.board")
-    console.log(boardSelector)
     for (var i = 0; i < boardSelector.length; i++) {
       boardSelector[i].classList.remove('full');
     }
@@ -183,38 +181,73 @@ class App extends Component {
       return;
     }
 
-    let board;
+    let startBoard;
+    let finishBoard;
     let oldBoards = [];
+    let oldBoards2 = [];
 
     for (let i = 0; i < this.state.boards.length; i++) {
       if (this.state.boards[i].id === source.droppableId) {
-        board = this.state.boards[i];
+        startBoard = this.state.boards[i];
       } else {
         oldBoards.push(this.state.boards[i]);
       }
     }
 
-    const taskToMove = board.tasks.filter(task => task.id === draggableId)[0];
-    const newTaskIds = Array.from(board.tasks)
-    newTaskIds.splice(source.index, 1);
-    newTaskIds.splice(destination.index, 0, taskToMove);
+    for (let i = 0; i < this.state.boards.length; i++) {
+      if (this.state.boards[i].id === destination.droppableId) {
+        finishBoard = this.state.boards[i];
+      } else {
+        oldBoards2.push(this.state.boards[i]);
+      }
+    }
 
-    const newBoard = {
-      ...board,
-      tasks: newTaskIds
-    };
+    if (startBoard === finishBoard) {
+      const taskToMove = startBoard.tasks.filter(task => task.id === draggableId)[0];
+      const newTaskIds = Array.from(startBoard.tasks)
+      newTaskIds.splice(source.index, 1);
+      newTaskIds.splice(destination.index, 0, taskToMove);
 
-    const boards = [newBoard, ...oldBoards];
-    const sortedBoards = boards.sort((a, b) => a.id.localeCompare(b.id));
+      const newBoard = {
+        ...startBoard,
+        tasks: newTaskIds
+      };
 
-    this.setState({
-      boards
-    })
+      const boards = [newBoard, ...oldBoards];
+      const sortedBoards = boards.sort((a, b) => a.id.localeCompare(b.id));
+
+      this.setState({
+        boards
+      })
+      return;
+
+    } else {
+      const taskToMove = startBoard.tasks.filter(task => task.id === draggableId)[0];
+      const startTaskIds = Array.from(startBoard.tasks)
+      startTaskIds.splice(source.index, 1);
+      console.log(startTaskIds)
+
+      // at this point, we've gone ahead
+      // and removed the task from where it was.
+
+      const finishTaskIds = Array.from(finishBoard.tasks)
+      finishTaskIds.splice(destination.index, 0, taskToMove)
+      const newFinish = {
+        ...finishBoard,
+        tasks: finishTaskIds
+      };
+
+      const boards = [newFinish, ...oldBoards2];
+      const sortedBoards = boards.sort((a, b) => a.id.localeCompare(b.id));
+
+      this.setState({
+        boards
+      })
+      return;
+    }
   }
 
   render() {
-    console.log(this.state.boards)
-
     return (
       <div className="App">
         <Header onButtonClick={this.onButtonClick} />
