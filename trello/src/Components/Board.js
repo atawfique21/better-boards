@@ -1,7 +1,7 @@
 import React from 'react';
 import AddTask from './AddTask';
 import Task from './Task';
-import { Droppable } from 'react-beautiful-dnd';
+import { Draggable } from 'react-beautiful-dnd'
 
 function Board(props) {
   return (
@@ -16,30 +16,31 @@ function Board(props) {
           : null
         }
         {props.tasks && props.tasks.map((task, key) =>
-          < Droppable droppableId={props.id} >
+          <Draggable draggableId={task.id} index={key}>
             {(provided, snapshot) => (
               <div
+                key={key}
+                className="task"
+                {...provided.draggableProps}
+                {...provided.dragHandleProps}
                 ref={provided.innerRef}
-                {...provided.droppableProps}
               >
                 <Task
                   task={task}
                   name={task.name}
-                  id={task.id}
-                  index={key}
+                  // id={task.id}
+                  // index={key}
                   checkList={task.checkList}
                   note={task.note}
-                  divKey={key}
+                  // divKey={key}
                   handleClick={props.handleClick}
                   handleAddNotes={props.handleAddNotes}
                   handleAddChecklist={props.handleAddChecklist}
                 />
-                {provided.placeholder}
               </div>
             )}
-          </Droppable>
+          </Draggable>
         )}
-
       </div>
     </div >
   )

@@ -4,7 +4,7 @@ import Header from './Components/Header';
 import axios from 'axios';
 import Widget from './Components/Widget';
 import Board from './Components/Board';
-import { DragDropContext } from 'react-beautiful-dnd';
+import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 
 class App extends Component {
   constructor(props) {
@@ -55,14 +55,19 @@ class App extends Component {
           {
             name: "Powerwash drive-way",
             id: "task-7"
-          }]
+          },
+          {
+            name: "whatever",
+            id: "task-8"
+          }
+          ]
         },
         {
           name: "Done",
           id: "column-3",
           tasks: [{
             name: "Clean up grass",
-            id: "task-8",
+            id: "task-9",
             checkList: ["Mow grass", "Put new seeds"]
           }]
         }
@@ -149,6 +154,7 @@ class App extends Component {
 
   onDragEnd = result => {
     // TODO: update 
+    console.log(result)
     const { destination, source, draggableId } = result;
 
     if (!destination) {
@@ -173,21 +179,23 @@ class App extends Component {
       }
     }
 
+    console.log(board)
+
+    const taskToMove = board.tasks.filter(task => task.id === draggableId)[0];
     const newTaskIds = Array.from(board.tasks)
     newTaskIds.splice(source.index, 1);
-    newTaskIds.splice(destination.index, 0, draggableId);
+    newTaskIds.splice(destination.index, 0, taskToMove);
+    // TODO: destination index above doesn't tell what column to drop it into.
 
-    // console.log(newTaskIds)
     const newBoard = {
       ...board,
       tasks: newTaskIds
     };
 
-
-    console.log(newBoard)
-
     const boards = [newBoard, ...oldBoards];
     const sortedBoards = boards.sort((a, b) => a.id.localeCompare(b.id));
+
+    console.log(newBoard)
 
     this.setState({
       boards
@@ -205,20 +213,31 @@ class App extends Component {
             onDragEnd={this.onDragEnd}
           >
             {this.state.boards.map((board, key) =>
-              <Board
-                name={board.name}
-                index={key}
-                id={board.id}
-                tasks={board.tasks}
-                checkList={board.checkList}
-                note={board.note}
-                addTask={this.state.addTask}
-                onSubmit={this.onFormSubmit}
-                handleChange={this.handleChange}
-                handleClick={this.handleClick}
-                handleAddNotes={this.handleAddNotes}
-                handleAddChecklist={this.handleAddChecklist}
-              />
+              <Droppable droppableId={board.id}>
+                {(provided, snapshot) => (
+                  <div
+                    ref={provided.innerRef}
+                    {...provided.droppableProps}
+                  >
+                    <Board
+                      // key={board.id}
+                      name={board.name}
+                      index={key}
+                      // id={board.id}
+                      tasks={board.tasks}
+                      checkList={board.checkList}
+                      note={board.note}
+                      addTask={this.state.addTask}
+                      onSubmit={this.onFormSubmit}
+                      handleChange={this.handleChange}
+                      handleClick={this.handleClick}
+                      handleAddNotes={this.handleAddNotes}
+                      handleAddChecklist={this.handleAddChecklist}
+                    />
+                    {provided.placeholder}
+                  </div>
+                )}
+              </Droppable>
             )}
           </DragDropContext>
         </div>
