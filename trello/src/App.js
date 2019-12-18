@@ -225,19 +225,47 @@ class App extends Component {
       const taskToMove = startBoard.tasks.filter(task => task.id === draggableId)[0];
       const startTaskIds = Array.from(startBoard.tasks)
       startTaskIds.splice(source.index, 1);
-      console.log(startTaskIds)
+      // console.log(startTaskIds)
 
       // at this point, we've gone ahead
       // and removed the task from where it was.
 
+      // filter through oldBoards 2 and if task.id matches, remove it. 
+
+      let currentBoard;
+      oldBoards2.map(board => {
+        if (board.id === source.droppableId) {
+          currentBoard = board
+        }
+      })
+
+      let takenBoard = oldBoards2.splice(source.droppableId, 1)[0]
+      const takenBoardTasks = Array.from(takenBoard.tasks)
+      takenBoardTasks.splice(source.index, 1)
+
+      let newNew = {
+        ...takenBoard,
+        tasks: takenBoardTasks
+      }
+
+      console.log(newNew)
+
+      const newMe = [...oldBoards2, newNew]
+      // console.log(newMe)
+
       const finishTaskIds = Array.from(finishBoard.tasks)
       finishTaskIds.splice(destination.index, 0, taskToMove)
+      // console.log(oldBoards2)
+      // At this point, we've put into new array. 
       const newFinish = {
         ...finishBoard,
         tasks: finishTaskIds
       };
 
-      const boards = [newFinish, ...oldBoards2];
+      // console.log(oldBoards2)
+
+      const boards = [newFinish, ...newMe];
+      // console.log(boards)
       const sortedBoards = boards.sort((a, b) => a.id.localeCompare(b.id));
 
       this.setState({
