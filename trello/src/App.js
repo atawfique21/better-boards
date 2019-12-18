@@ -152,8 +152,23 @@ class App extends Component {
     e.preventDefault()
   }
 
+  onDragStart = result => {
+    //TODO: Query selector all .boards, set height to 100% and overflow: show(?)
+    let boardSelector = document.querySelectorAll("div.board")
+    console.log(boardSelector)
+    for (var i = 0; i < boardSelector.length; i++) {
+      boardSelector[i].classList.add('full');
+    }
+  }
+
   onDragEnd = result => {
-    // TODO: update 
+    // TODO: update to query selector all .boards and remove the class
+    let boardSelector = document.querySelectorAll("div.board")
+    console.log(boardSelector)
+    for (var i = 0; i < boardSelector.length; i++) {
+      boardSelector[i].classList.remove('full');
+    }
+
     const { destination, source, draggableId } = result;
 
     if (!destination) {
@@ -205,6 +220,7 @@ class App extends Component {
         <Header onButtonClick={this.onButtonClick} />
         <div className="board-wrapper">
           <DragDropContext
+            onDragStart={this.onDragStart}
             onDragEnd={this.onDragEnd}
           >
             {this.state.boards.map((board, key) =>
@@ -215,10 +231,8 @@ class App extends Component {
                     {...provided.droppableProps}
                   >
                     <Board
-                      // key={board.id}
                       name={board.name}
                       index={key}
-                      // id={board.id}
                       tasks={board.tasks}
                       checkList={board.checkList}
                       note={board.note}
