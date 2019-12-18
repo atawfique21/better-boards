@@ -16,10 +16,10 @@ function Board(props) {
           : null
         }
         {props.tasks && props.tasks.map((task, key) =>
-          <Draggable draggableId={task.id} index={key}>
+          <Draggable draggableId={task.id} index={key} key={task.id}>
             {(provided, snapshot) => (
               <div
-                key={key}
+                key={task.id}
                 className="task"
                 {...provided.draggableProps}
                 {...provided.dragHandleProps}

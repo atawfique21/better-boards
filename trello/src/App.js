@@ -154,7 +154,6 @@ class App extends Component {
 
   onDragEnd = result => {
     // TODO: update 
-    console.log(result)
     const { destination, source, draggableId } = result;
 
     if (!destination) {
@@ -179,8 +178,6 @@ class App extends Component {
       }
     }
 
-    console.log(board)
-
     const taskToMove = board.tasks.filter(task => task.id === draggableId)[0];
     const newTaskIds = Array.from(board.tasks)
     newTaskIds.splice(source.index, 1);
@@ -195,15 +192,13 @@ class App extends Component {
     const boards = [newBoard, ...oldBoards];
     const sortedBoards = boards.sort((a, b) => a.id.localeCompare(b.id));
 
-    console.log(newBoard)
-
     this.setState({
       boards
     })
   }
 
   render() {
-
+    console.log(this.state.boards)
 
     return (
       <div className="App">
@@ -213,7 +208,7 @@ class App extends Component {
             onDragEnd={this.onDragEnd}
           >
             {this.state.boards.map((board, key) =>
-              <Droppable droppableId={board.id}>
+              <Droppable droppableId={board.id} key={board.id}>
                 {(provided, snapshot) => (
                   <div
                     ref={provided.innerRef}
