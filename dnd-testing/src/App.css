@@ -1,0 +1,11 @@
+.App > div {
+  border: 1px solid black;
+  width: fit-content;
+  min-width: 500px;
+}
+
+.task {
+  border: 1px solid black;
+  padding: 8px;
+  margin-bottom: 15px
+}
