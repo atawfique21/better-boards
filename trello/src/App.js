@@ -6,6 +6,9 @@ import Widget from './Components/Widget';
 import Board from './Components/Board';
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 
+// TODO: addTask is not properly working. If you click the button for the second time, it breaks.
+// TODO: make it so when a new task is added, it's automatically draggable.
+
 class App extends Component {
   constructor(props) {
     super(props)
@@ -153,7 +156,6 @@ class App extends Component {
   }
 
   onDragStart = result => {
-    //TODO: Query selector all .boards, set height to 100% and overflow: show(?)
     let boardSelector = document.querySelectorAll("div.board")
     console.log(boardSelector)
     for (var i = 0; i < boardSelector.length; i++) {
@@ -162,7 +164,6 @@ class App extends Component {
   }
 
   onDragEnd = result => {
-    // TODO: update to query selector all .boards and remove the class
     let boardSelector = document.querySelectorAll("div.board")
     console.log(boardSelector)
     for (var i = 0; i < boardSelector.length; i++) {
@@ -197,7 +198,6 @@ class App extends Component {
     const newTaskIds = Array.from(board.tasks)
     newTaskIds.splice(source.index, 1);
     newTaskIds.splice(destination.index, 0, taskToMove);
-    // TODO: destination index above doesn't tell what column to drop it into.
 
     const newBoard = {
       ...board,
