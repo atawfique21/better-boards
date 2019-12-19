@@ -18,7 +18,7 @@ class App extends Component {
       zipcode: "11432",
       weatherData: {},
       addTask: false,
-      currentTaskCounter: 8,
+      currentTaskCounter: 10,
       input: "",
       boards: [
         {
@@ -72,7 +72,12 @@ class App extends Component {
             name: "Clean up grass",
             id: "task-9",
             checkList: ["Mow grass", "Put new seeds"]
-          }]
+          },
+          {
+            name: "Testing",
+            id: "task-10"
+          }
+          ]
         }
       ],
       columnOrder: ["column-1", "column-2", "column-3"]
@@ -163,6 +168,7 @@ class App extends Component {
   }
 
   onDragEnd = result => {
+    console.log(result)
     let boardSelector = document.querySelectorAll("div.board")
     for (var i = 0; i < boardSelector.length; i++) {
       boardSelector[i].classList.remove('full');
@@ -225,19 +231,19 @@ class App extends Component {
       const taskToMove = startBoard.tasks.filter(task => task.id === draggableId)[0];
       const startTaskIds = Array.from(startBoard.tasks)
       startTaskIds.splice(source.index, 1);
-      // console.log(startTaskIds)
 
-      // at this point, we've gone ahead
-      // and removed the task from where it was.
 
-      // filter through oldBoards 2 and if task.id matches, remove it. 
+      // let currentBoard;
+      // oldBoards2.map(board => {
+      //   if (board.id === source.droppableId) {
+      //     currentBoard = board
+      //     console.log(currentBoard)
+      //   }
+      // })
 
-      let currentBoard;
-      oldBoards2.map(board => {
-        if (board.id === source.droppableId) {
-          currentBoard = board
-        }
-      })
+      //TODO: Figure out what board you're dragging from.
+
+      console.log(oldBoards2)
 
       let takenBoard = oldBoards2.splice(source.droppableId, 1)[0]
       const takenBoardTasks = Array.from(takenBoard.tasks)
@@ -248,24 +254,16 @@ class App extends Component {
         tasks: takenBoardTasks
       }
 
-      console.log(newNew)
-
       const newMe = [...oldBoards2, newNew]
-      // console.log(newMe)
 
       const finishTaskIds = Array.from(finishBoard.tasks)
       finishTaskIds.splice(destination.index, 0, taskToMove)
-      // console.log(oldBoards2)
-      // At this point, we've put into new array. 
       const newFinish = {
         ...finishBoard,
         tasks: finishTaskIds
       };
 
-      // console.log(oldBoards2)
-
       const boards = [newFinish, ...newMe];
-      // console.log(boards)
       const sortedBoards = boards.sort((a, b) => a.id.localeCompare(b.id));
 
       this.setState({
