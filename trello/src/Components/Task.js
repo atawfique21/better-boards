@@ -23,15 +23,20 @@ class Task extends React.Component {
 
     this.state = {
       noteInput: "",
-      addNote: false
+      addNote: this.props.addNoteBoolean
     }
   }
 
   handleAddNotes = (e, sentTask) => {
     e.preventDefault();
-    console.log(sentTask)
     this.setState({
       addNote: !this.state.addNote
+    })
+  }
+
+  handleNoteChange = (e) => {
+    this.setState({
+      input: e.target.value
     })
   }
 
@@ -63,9 +68,13 @@ class Task extends React.Component {
         }
         <AddDetails
           handleAddNotes={this.handleAddNotes}
-          noteState={this.state.addNote}
           handleAddChecklist={this.handleAddChecklist}
           task={this.props.task}
+          onChange={this.handleNoteChange}
+          handleNoteSubmit={this.props.handleNoteSubmit}
+          input={this.state.input}
+          noteValue={this.props.noteValue}
+          noteState={this.state.addNote}
         />
       </div>
     )

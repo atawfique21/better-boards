@@ -10,7 +10,7 @@ const AddTask = (props) => {
         placeholder="Name task..."
         onChange={props.onChange}
         autoFocus
-        autocomplete="off"
+        autoComplete="off"
       />
     </form>
   )

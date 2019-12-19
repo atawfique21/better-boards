@@ -22,6 +22,7 @@ class App extends Component {
       zipcode: "11432",
       weatherData: {},
       addTask: false,
+      addNote: false,
       currentTaskCounter: 10,
       input: "",
       boards: [
@@ -64,7 +65,7 @@ class App extends Component {
             id: "task-7"
           },
           {
-            name: "whatever",
+            name: "Clean up leaves",
             id: "task-8"
           }
           ]
@@ -78,7 +79,7 @@ class App extends Component {
             checkList: ["Mow grass", "Put new seeds"]
           },
           {
-            name: "Testing",
+            name: "Clean porch",
             id: "task-10"
           }
           ]
@@ -169,6 +170,19 @@ class App extends Component {
     for (var i = 0; i < boardSelector.length; i++) {
       boardSelector[i].classList.add('full');
     }
+  }
+
+  handleNoteSubmit = (e, input, task) => {
+    e.preventDefault()
+    console.log(e, input, task)
+    const newTasks = this.state.boards.map((board) => {
+      return board.tasks.map((item) => {
+        if (item.name === task.name) item.note = input;
+      })
+    })
+    this.setState({
+      addNote: false
+    })
   }
 
   onDragEnd = result => {
@@ -300,6 +314,8 @@ class App extends Component {
                       handleClick={this.handleClick}
                       handleAddNotes={this.handleAddNotes}
                       handleAddChecklist={this.handleAddChecklist}
+                      handleNoteSubmit={this.handleNoteSubmit}
+                      addNoteBoolean={this.state.addNote}
                     />
                     {provided.placeholder}
                   </Container>
