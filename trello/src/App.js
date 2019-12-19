@@ -228,7 +228,7 @@ class App extends Component {
       return;
 
     } else {
-      const taskToMove = startBoard.tasks.filter(task => task.id === draggableId)[0];
+      const taskToMove = startBoard.tasks.filter(task => task.id === draggableId)[0]
       const startTaskIds = Array.from(startBoard.tasks)
       startTaskIds.splice(source.index, 1);
 
@@ -242,10 +242,16 @@ class App extends Component {
       // })
 
       //TODO: Figure out what board you're dragging from.
+      let correctIndex = 0;
+      for (i = 0; i < oldBoards2.length; i++) {
+        if (oldBoards2[i].id === source.droppableId) {
+          correctIndex = i;
+        }
+      }
 
-      console.log(oldBoards2)
+      console.log(correctIndex)
 
-      let takenBoard = oldBoards2.splice(source.droppableId, 1)[0]
+      let takenBoard = oldBoards2.splice(correctIndex, 1)[0]
       const takenBoardTasks = Array.from(takenBoard.tasks)
       takenBoardTasks.splice(source.index, 1)
 
@@ -255,6 +261,8 @@ class App extends Component {
       }
 
       const newMe = [...oldBoards2, newNew]
+
+      console.log(newMe)
 
       const finishTaskIds = Array.from(finishBoard.tasks)
       finishTaskIds.splice(destination.index, 0, taskToMove)
