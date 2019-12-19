@@ -22,8 +22,17 @@ class Task extends React.Component {
     super(props)
 
     this.state = {
-      noteInput: ""
+      noteInput: "",
+      addNote: false
     }
+  }
+
+  handleAddNotes = (e, sentTask) => {
+    e.preventDefault();
+    console.log(sentTask)
+    this.setState({
+      addNote: !this.state.addNote
+    })
   }
 
   render() {
@@ -31,7 +40,10 @@ class Task extends React.Component {
       <div>
         <div className="title-and-delete">
           <div>{this.props.name}</div>
-          <DeleteTask handleClick={this.props.handleClick} task={this.props.task} />
+          <DeleteTask
+            handleClick={this.props.handleClick}
+            task={this.props.task}
+          />
         </div>
         {this.props.checkList &&
           <div className="checklist-wrapper">
@@ -49,7 +61,12 @@ class Task extends React.Component {
             <p>{this.props.note}</p>
           </div>
         }
-        <AddDetails handleAddNotes={this.props.handleAddNotes} handleAddChecklist={this.props.handleAddChecklist} task={this.props.task} />
+        <AddDetails
+          handleAddNotes={this.handleAddNotes}
+          noteState={this.state.addNote}
+          handleAddChecklist={this.handleAddChecklist}
+          task={this.props.task}
+        />
       </div>
     )
   }
