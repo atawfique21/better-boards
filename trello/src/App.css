@@ -68,7 +68,9 @@ h1, h2 {
   flex-direction: row;
   justify-content: space-evenly;
   margin-top: 10px;
+  margin-bottom: 40px;
   flex-wrap: wrap;
+  /* background-color: ; */
 }
 
 .board {

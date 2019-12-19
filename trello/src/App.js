@@ -5,6 +5,13 @@ import axios from 'axios';
 import Widget from './Components/Widget';
 import Board from './Components/Board';
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
+import styled from 'styled-components'
+
+const Container = styled.div`
+  background-color: ${props => (props.isDraggingOver ? '#e5f0f570' : 'transparent')};
+  border-radius: 15px;
+`;
+
 
 class App extends Component {
   constructor(props) {
@@ -276,9 +283,10 @@ class App extends Component {
             {this.state.boards.map((board, key) =>
               <Droppable droppableId={board.id} key={board.id}>
                 {(provided, snapshot) => (
-                  <div
+                  <Container
                     ref={provided.innerRef}
                     {...provided.droppableProps}
+                    isDraggingOver={snapshot.isDraggingOver}
                   >
                     <Board
                       name={board.name}
@@ -294,7 +302,7 @@ class App extends Component {
                       handleAddChecklist={this.handleAddChecklist}
                     />
                     {provided.placeholder}
-                  </div>
+                  </Container>
                 )}
               </Droppable>
             )}

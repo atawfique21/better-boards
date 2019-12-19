@@ -1,7 +1,12 @@
 import React from 'react';
 import AddTask from './AddTask';
 import Task from './Task';
-import { Draggable } from 'react-beautiful-dnd'
+import { Draggable } from 'react-beautiful-dnd';
+import styled from 'styled-components';
+
+const Container = styled.div`
+  background-color: ${props => (props.isDragging ? 'lightgreen' : 'white')};
+`;
 
 function Board(props) {
   return (
@@ -18,12 +23,13 @@ function Board(props) {
         {props.tasks && props.tasks.map((task, key) =>
           <Draggable draggableId={task.id} index={key} key={task.id}>
             {(provided, snapshot) => (
-              <div
+              <Container
                 key={task.id}
                 className="task"
                 {...provided.draggableProps}
                 {...provided.dragHandleProps}
                 ref={provided.innerRef}
+                isDragging={snapshot.isDragging}
               >
                 <Task
                   task={task}
@@ -37,7 +43,7 @@ function Board(props) {
                   handleAddNotes={props.handleAddNotes}
                   handleAddChecklist={props.handleAddChecklist}
                 />
-              </div>
+              </Container>
             )}
           </Draggable>
         )}
