@@ -155,6 +155,10 @@ h5.section-title {
   margin-top: 10px;
 }
 
+div.note {
+  transform: translateX(-3px);
+}
+
 div.note, .checklist-wrapper {
   padding: 0px;
   border-radius: 5px;
