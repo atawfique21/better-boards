@@ -6,9 +6,6 @@ import Widget from './Components/Widget';
 import Board from './Components/Board';
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 
-// TODO: addTask is not properly working. If you click the button for the second time, it breaks.
-// TODO: make it so when a new task is added, it's automatically draggable.
-
 class App extends Component {
   constructor(props) {
     super(props)
@@ -232,24 +229,12 @@ class App extends Component {
       const startTaskIds = Array.from(startBoard.tasks)
       startTaskIds.splice(source.index, 1);
 
-
-      // let currentBoard;
-      // oldBoards2.map(board => {
-      //   if (board.id === source.droppableId) {
-      //     currentBoard = board
-      //     console.log(currentBoard)
-      //   }
-      // })
-
-      //TODO: Figure out what board you're dragging from.
       let correctIndex = 0;
       for (i = 0; i < oldBoards2.length; i++) {
         if (oldBoards2[i].id === source.droppableId) {
           correctIndex = i;
         }
       }
-
-      console.log(correctIndex)
 
       let takenBoard = oldBoards2.splice(correctIndex, 1)[0]
       const takenBoardTasks = Array.from(takenBoard.tasks)
@@ -261,8 +246,6 @@ class App extends Component {
       }
 
       const newMe = [...oldBoards2, newNew]
-
-      console.log(newMe)
 
       const finishTaskIds = Array.from(finishBoard.tasks)
       finishTaskIds.splice(destination.index, 0, taskToMove)

@@ -245,5 +245,5 @@ input.nameTask::placeholder {
 }
 
 .full {
-  min-height: 1000px!important;
+  max-height: 100%!important;
 }
