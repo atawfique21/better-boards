@@ -75,8 +75,8 @@ h1, h2 {
   color: black;
   background-color: #e5f0f5;
   min-width: 500px;
-  min-height: 500px;
-  max-height: 500px;
+  /* min-height: 500px; */
+  max-height: 800px;
   max-width: 500px;
   border-radius: 15px;
   box-shadow: 0px 0px 20px 5px rgba(50, 50, 50, 0.25);
@@ -244,6 +244,6 @@ input.nameTask::placeholder {
   justify-content: space-between;
 }
 
-.full {
+/* .full {
   max-height: 100%!important;
-}
+} */
