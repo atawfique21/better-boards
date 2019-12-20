@@ -163,12 +163,12 @@ h2.board-name {
 
 .taskFull {
   max-height: 1000px;
-  opacity: 1;
   transition: all 0.5s ease-in;
 }
 
 .task > .taskContainer > .addDetailsContainer > .addDetails {
-  opacity: 0;
+  opacity: 1;
+  /* TODO: change the above to zero if you want to make the buttons render depending on hover or not. */
   transition: all 1s ease-out;
 }
 
