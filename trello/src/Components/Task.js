@@ -57,7 +57,7 @@ class Task extends React.Component {
             <h5 className="section-title">Checklist</h5>
             {this.props.checkList.map((listItem, key) =>
               <div className="checklist" key={key}>
-                <label onClick="this.checked=!this.checked"><input type="checkbox" className="checkbox" />{listItem}</label>
+                <label onClick={"this.checked=!this.checked"}><input type="checkbox" className="checkbox" />{listItem}</label>
               </div>
             )}
           </div>
