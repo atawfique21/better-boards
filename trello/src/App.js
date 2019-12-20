@@ -165,24 +165,52 @@ class App extends Component {
     e.preventDefault()
   }
 
-  onDragStart = result => {
-    let boardSelector = document.querySelectorAll("div.board")
-    for (var i = 0; i < boardSelector.length; i++) {
-      boardSelector[i].classList.add('full');
-    }
-  }
-
-  handleNoteSubmit = (e, input, task) => {
+  handleNoteSubmit = (e, input, task, showNotes) => {
     e.preventDefault()
-    console.log(e, input, task)
+    console.log(showNotes)
     const newTasks = this.state.boards.map((board) => {
       return board.tasks.map((item) => {
-        if (item.name === task.name) item.note = input;
+        if (item.name === task.name) {
+          if (item.note === input) {
+            return;
+          } else {
+            item.note = input;
+          }
+        }
       })
     })
     this.setState({
       addNote: false
     })
+  }
+
+  onTaskClick = (e, taskId) => {
+    e.preventDefault()
+    document.querySelector(`#${taskId}`).classList.add("taskFull")
+    document.querySelector(`#${taskId}`).classList.add("showButtons")
+  }
+
+  handleExpand = (e) => {
+    e.preventDefault()
+    let taskDivs = document.querySelectorAll(`.task`)
+    for (let i = 0; i < taskDivs.length; i++) {
+      taskDivs[i].classList.add("taskFull")
+    }
+  }
+
+  handleCollapse = (e) => {
+    e.preventDefault()
+    let taskDivs = document.querySelectorAll(`.task`)
+    for (let i = 0; i < taskDivs.length; i++) {
+      taskDivs[i].classList.remove('taskFull')
+    }
+  }
+
+  onDragStart = result => {
+    let boardSelector = document.querySelectorAll("div.board")
+    for (let i = 0; i < boardSelector.length; i++) {
+      boardSelector[i].classList.add('full');
+    }
   }
 
   onDragEnd = result => {
@@ -288,7 +316,11 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Header onButtonClick={this.onButtonClick} />
+        <Header
+          onButtonClick={this.onButtonClick}
+          handleExpand={this.handleExpand}
+          handleCollapse={this.handleCollapse}
+        />
         <div className="board-wrapper">
           <DragDropContext
             onDragStart={this.onDragStart}
@@ -316,6 +348,7 @@ class App extends Component {
                       handleAddChecklist={this.handleAddChecklist}
                       handleNoteSubmit={this.handleNoteSubmit}
                       addNoteBoolean={this.state.addNote}
+                      onTaskClick={this.onTaskClick}
                     />
                     {provided.placeholder}
                   </Container>

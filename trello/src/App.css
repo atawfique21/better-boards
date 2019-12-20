@@ -14,6 +14,12 @@ body {
   background-attachment: fixed;
 }
 
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+}
+
 header {
   display: flex;
   flex-direction: row;
@@ -21,6 +27,7 @@ header {
   align-items: center;
   box-shadow: 0px 0px 20px 5px rgba(50, 50, 50, 0.5);
   margin-bottom: 20px;
+  z-index: 1;
 }
 
 h1, h2 {
@@ -45,9 +52,22 @@ h1, h2 {
   background-color: rgba(50, 50, 50, 0.45);
 }
 
-.board-name {
-  background-color: rgba(50, 50, 50, 0.42);
-  
+h2.board-name {
+  background-color: transparent;
+  font-size: 40px;
+  color: #e5f0f5;
+}
+
+.collapse-container {
+  display: flex;
+  flex-direction: row;
+  align-self: center;
+  border-radius: 10px;
+  box-shadow: 0px 0px 20px 5px rgba(50, 50, 50, 0.3);
+  padding: 15px;
+  transform: translateX(-20px);
+  margin-top: 0px;
+  z-index: 0;
 }
 
 .center {
@@ -133,22 +153,39 @@ h1, h2 {
   padding: 15px;
   margin: 15px;
   border-radius: 15px;
-  min-height: 30px;
+  min-height: 40px;
   display: flex;
   flex-direction: column;
-  /* max-height: 30px;
+  max-height: 40px;
   overflow: hidden;
-  transition: all 1.5s ease-out; */
+  transition: all 0.8s ease-out;
 }
-/* 
-.task > div.addDetails {
-  visibility: hidden;
+
+.taskFull {
+  max-height: 1000px;
+  opacity: 1;
+  transition: all 0.5s ease-in;
+}
+
+.task > .taskContainer > .addDetailsContainer > .addDetails {
+  opacity: 0;
+  transition: all 1s ease-out;
+}
+
+.task:hover > .taskContainer > .addDetailsContainer > .addDetails {
+  opacity: 1;
+  transition: all 0.5s ease-in;
+}
+
+.task:active > .taskContainer > .addDetailsContainer > .addDetails {
+  opacity: 1;
+  transition: all 0.5s ease-i
 }
 
 .task:hover, .task:active {
   max-height: 1000px;
   transition: all 1.2s ease-in;
-} */
+}
 
 .task > div {
   padding: 5px;
@@ -292,10 +329,15 @@ input.nameTask::placeholder {
   background-color: rgba(50, 50, 50, 0.13);
   border: transparent;
   cursor: pointer;
+  outline: none;
 }
 
 .generic-button:hover {
   background-color: rgba(50, 50, 50, 0.20);
+}
+
+.generic-button:active {
+  background-color: rgba(50, 50, 50, 0.25);
 }
 
 
@@ -306,4 +348,25 @@ input.nameTask::placeholder {
   justify-content: center;
   justify-items: center;
   width: fit-content;
+}
+
+.collapse-expand-buttons {
+  font-family: 'Merriweather Sans', sans-serif;
+  padding: 5px;
+  color: white;
+  font-size: 15px;
+  margin: 5px;
+  border-radius: 5px;
+  background-color: rgba(50, 50, 50, 0.35);
+  border: transparent;
+  cursor: pointer;
+  outline: none;
+}
+
+.collapse-expand-button:hover {
+  background-color: rgba(50, 50, 50, 0.45);
+}
+
+.collapse-expand-button:active {
+  background-color: rgba(50, 50, 50, 0.55);
 }

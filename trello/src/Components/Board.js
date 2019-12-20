@@ -26,6 +26,8 @@ function Board(props) {
               <Container
                 key={task.id}
                 className="task"
+                id={task.id}
+                onClick={(e) => props.onTaskClick(e, task.id)}
                 {...provided.draggableProps}
                 {...provided.dragHandleProps}
                 ref={provided.innerRef}

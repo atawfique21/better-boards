@@ -42,7 +42,7 @@ class Task extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="taskContainer">
         <div className="title-and-delete">
           <div>{this.props.name}</div>
           <DeleteTask
