@@ -36,11 +36,8 @@ function Board(props) {
                 <Task
                   task={task}
                   name={task.name}
-                  // id={task.id}
-                  // index={key}
                   checkList={task.checkList}
                   note={task.note}
-                  // divKey={key}
                   handleClick={props.handleClick}
                   handleAddNotes={props.handleAddNotes}
                   handleAddChecklist={props.handleAddChecklist}
