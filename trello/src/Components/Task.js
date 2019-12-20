@@ -23,6 +23,7 @@ class Task extends React.Component {
 
     this.state = {
       noteInput: "",
+      checklistInput: "",
       addNote: this.props.addNoteBoolean,
       addCheckList: this.props.addChecklistBoolean
     }
@@ -47,6 +48,13 @@ class Task extends React.Component {
     this.setState({
       addCheckList: !this.state.addCheckList
     })
+  }
+
+  handleChecklistChange = (e) => {
+    this.setState({
+      checklistInput: e.target.value
+    })
+    console.log(this.state.checklistInput)
   }
 
   render() {
@@ -84,6 +92,9 @@ class Task extends React.Component {
           input={this.state.input}
           noteValue={this.props.noteValue}
           noteState={this.state.addNote}
+          onChecklistChange={this.handleChecklistChange}
+          handleChecklistSubmit={this.props.handleChecklistSubmit}
+          checklistInput={this.state.checklistInput}
         />
       </div>
     )

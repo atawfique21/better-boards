@@ -6,7 +6,7 @@ class AddDetails extends React.Component {
 
     this.state = {
       addNote: false,
-      addChecklist: true
+      addChecklist: false
     }
   }
 
@@ -20,12 +20,26 @@ class AddDetails extends React.Component {
   handleSubmit = (e) => {
     e.persist();
     this.setState({ addNote: !this.state.addNote }, () => {
-      this.props.handleNoteSubmit(e, this.props.input, this.props.task, this.state.addNote)
+      this.props.handleNoteSubmit(e, this.props.input, this.props.task)
     })
   }
 
   handleAddChecklist = (e) => {
-    e.preventDefault()
+    e.persist();
+    this.setState({
+      addChecklist: !this.state.addChecklist
+    }, () => {
+      this.props.handleAddChecklist(e, this.props.task)
+    })
+  }
+
+  handleChecklistSubmit = (e) => {
+    e.persist();
+    this.setState({
+      addChecklist: !this.state.addChecklist
+    }, () => {
+      this.props.handleChecklistSubmit(e, this.props.checklistInput, this.props.task)
+    })
   }
 
   render() {
@@ -60,14 +74,15 @@ class AddDetails extends React.Component {
         }
         {this.state.addChecklist ?
           <div className="addChecklistForm">
-            <form>
+            <form onSubmit={(e) => this.handleChecklistSubmit(e)}>
               <input
                 type="text"
                 id="addNote"
                 className="nameNotes"
-                placeholder="Add to checklist..."
+                placeholder="Add checklist item..."
                 autoFocus
                 autoComplete="off"
+                onChange={this.props.onChecklistChange}
               >
               </input>
             </form>
@@ -79,12 +94,12 @@ class AddDetails extends React.Component {
           !this.props.task.note && !this.props.noteState ?
             <div className="addDetails">
               <button className="generic-button" onClick={this.handleAddNote}>+ Add Note</button>
-              <button className="generic-button" onClick={this.props.handleAddChecklist}>+ Add Checklist</button>
+              <button className="generic-button" onClick={this.handleAddChecklist}>+ Add Checklist</button>
             </div>
             :
             <div className="addDetails">
               <button className="generic-button" onClick={this.handleAddNote}>Edit Note</button>
-              <button className="generic-button" onClick={this.props.handleAddChecklist}>+ Add Checklist</button>
+              <button className="generic-button" onClick={this.handleAddChecklist}>+ Add Checklist</button>
             </div>
         }
       </div >

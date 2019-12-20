@@ -162,9 +162,9 @@ class App extends Component {
     })
   }
 
-  handleAddChecklist = (e, input, task) => {
+  handleChecklistSubmit = (e, input, task) => {
     e.preventDefault()
-    console.log('hi')
+    console.log(input, task)
     const newChecklist = this.state.boards.map((board) => {
       return board.tasks.map((item) => {
         if (item.name === task.name) {
@@ -360,7 +360,7 @@ class App extends Component {
                       handleChange={this.handleChange}
                       handleClick={this.handleClick}
                       handleAddNotes={this.handleAddNotes}
-                      handleAddChecklist={this.handleAddChecklist}
+                      handleChecklistSubmit={this.handleChecklistSubmit}
                       handleNoteSubmit={this.handleNoteSubmit}
                       addNoteBoolean={this.state.addNote}
                       addChecklistBoolean={this.state.addChecklistBoolean}
