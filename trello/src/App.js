@@ -186,7 +186,7 @@ class App extends Component {
 
   onTaskClick = (e, taskId) => {
     e.preventDefault()
-    document.querySelector(`#${taskId}`).classList.add("taskFull")
+    document.querySelector(`#${taskId}`).classList.toggle("taskFull")
     document.querySelector(`#${taskId}`).classList.add("showButtons")
   }
 
