@@ -110,7 +110,6 @@ h2.board-name {
   overflow-y: scroll;
   scrollbar-highlight-color: red;
   scrollbar-width: 100px;
-  opacity: 92%;
 }
 
 .outer-board {
