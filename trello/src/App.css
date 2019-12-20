@@ -237,7 +237,6 @@ div.note > p {
   border-radius: 10px;
   color: white;
   font-size: 15px;
-  opacity: 80%;
   transition: all 0.25s ease-in-out;
   position: fixed;
     bottom: 0;
