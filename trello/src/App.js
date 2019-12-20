@@ -164,7 +164,6 @@ class App extends Component {
 
   handleChecklistSubmit = (e, input, task) => {
     e.preventDefault()
-    console.log(input, task)
     const newChecklist = this.state.boards.map((board) => {
       return board.tasks.map((item) => {
         if (item.name === task.name) {
@@ -229,7 +228,6 @@ class App extends Component {
   }
 
   onDragEnd = result => {
-    console.log(result)
     let boardSelector = document.querySelectorAll("div.board")
     for (var i = 0; i < boardSelector.length; i++) {
       boardSelector[i].classList.remove('full');
