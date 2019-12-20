@@ -392,6 +392,7 @@ input.nameTask::placeholder {
 .delete-button:hover {
   background-color: rgb(238, 111, 96);
   cursor: pointer;
+  transform: scale(1.5);
 }
 
 .delete-button:active {
