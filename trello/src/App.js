@@ -6,6 +6,7 @@ import Widget from './Components/Widget';
 import Board from './Components/Board';
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 import styled from 'styled-components'
+import { Route, Redirect } from 'react-router-dom'
 
 const Container = styled.div`
   background-color: ${props => (props.isDraggingOver ? '#e5f0f570' : 'transparent')};
@@ -375,6 +376,9 @@ class App extends Component {
           icon={this.state.weatherData.icon}
           temp={this.state.weatherData.temp}
         />
+        <Route to="*">
+          <Redirect to="/" />
+        </Route>
       </div>
     );
   }
