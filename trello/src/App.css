@@ -397,3 +397,37 @@ input.nameTask::placeholder {
 .delete-button:active {
   background-color: rgb(218, 97, 83);
 }
+
+
+@media only screen 
+and (min-device-width : 375px) 
+and (max-device-width : 812px) 
+and (-webkit-device-pixel-ratio : 3)
+and (orientation : portrait) {
+body {
+  margin: auto;
+}
+h1, h2 {
+  font-weight: 600;
+  font-size: 20px;
+}
+h2.board-name{
+  font-size: 25px;
+}
+.collapse-container{
+  transform: translateX(3px);
+}
+.board {
+  min-width: 350px;
+  max-width: 350px;
+}
+.widget{
+  
+}
+.widget-name{
+  font-size: 10px;
+}
+.widget-components {
+  font-size: 10px;
+}
+}
