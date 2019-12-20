@@ -23,11 +23,12 @@ class Task extends React.Component {
 
     this.state = {
       noteInput: "",
-      addNote: this.props.addNoteBoolean
+      addNote: this.props.addNoteBoolean,
+      addCheckList: this.props.addChecklistBoolean
     }
   }
 
-  handleAddNotes = (e, sentTask) => {
+  handleAddNotes = (e) => {
     e.preventDefault();
     this.setState({
       addNote: !this.state.addNote
@@ -37,6 +38,14 @@ class Task extends React.Component {
   handleNoteChange = (e) => {
     this.setState({
       input: e.target.value
+    })
+  }
+
+  handleAddChecklist = (e) => {
+    // this is the one that's working
+    e.preventDefault();
+    this.setState({
+      addCheckList: !this.state.addCheckList
     })
   }
 

@@ -44,6 +44,7 @@ function Board(props) {
                   handleNoteSubmit={props.handleNoteSubmit}
                   noteValue={task.note}
                   addNoteBoolean={props.addNoteBoolean}
+                  addChecklistBoolean={props.addChecklistBoolean}
                 />
               </Container>
             )}

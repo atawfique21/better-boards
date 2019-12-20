@@ -23,6 +23,7 @@ class App extends Component {
       weatherData: {},
       addTask: false,
       addNote: false,
+      addChecklist: false,
       currentTaskCounter: 10,
       input: "",
       boards: [
@@ -161,13 +162,27 @@ class App extends Component {
     })
   }
 
-  handleAddChecklist = (e) => {
+  handleAddChecklist = (e, input, task) => {
     e.preventDefault()
+    console.log('hi')
+    const newChecklist = this.state.boards.map((board) => {
+      return board.tasks.map((item) => {
+        if (item.name === task.name) {
+          if (item.checkList) {
+            item.checkList.push(input)
+          } else {
+            item.checkList = [input]
+          }
+        }
+      })
+    })
+    this.setState({
+      addChecklist: false
+    })
   }
 
-  handleNoteSubmit = (e, input, task, showNotes) => {
+  handleNoteSubmit = (e, input, task) => {
     e.preventDefault()
-    console.log(showNotes)
     const newTasks = this.state.boards.map((board) => {
       return board.tasks.map((item) => {
         if (item.name === task.name) {
@@ -348,6 +363,7 @@ class App extends Component {
                       handleAddChecklist={this.handleAddChecklist}
                       handleNoteSubmit={this.handleNoteSubmit}
                       addNoteBoolean={this.state.addNote}
+                      addChecklistBoolean={this.state.addChecklistBoolean}
                       onTaskClick={this.onTaskClick}
                     />
                     {provided.placeholder}

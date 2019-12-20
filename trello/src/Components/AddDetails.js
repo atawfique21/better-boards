@@ -5,7 +5,8 @@ class AddDetails extends React.Component {
     super(props);
 
     this.state = {
-      addNote: false
+      addNote: false,
+      addChecklist: true
     }
   }
 
@@ -21,6 +22,10 @@ class AddDetails extends React.Component {
     this.setState({ addNote: !this.state.addNote }, () => {
       this.props.handleNoteSubmit(e, this.props.input, this.props.task, this.state.addNote)
     })
+  }
+
+  handleAddChecklist = (e) => {
+    e.preventDefault()
   }
 
   render() {
@@ -48,6 +53,23 @@ class AddDetails extends React.Component {
                   id="submitNote"
                 >Submit</button>
               </div>
+            </form>
+          </div>
+          :
+          null
+        }
+        {this.state.addChecklist ?
+          <div className="addChecklistForm">
+            <form>
+              <input
+                type="text"
+                id="addNote"
+                className="nameNotes"
+                placeholder="Add to checklist..."
+                autoFocus
+                autoComplete="off"
+              >
+              </input>
             </form>
           </div>
           :
