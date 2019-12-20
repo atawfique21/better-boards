@@ -402,8 +402,7 @@ input.nameTask::placeholder {
 @media only screen 
 and (min-device-width : 375px) 
 and (max-device-width : 812px) 
-and (-webkit-device-pixel-ratio : 3)
-and (orientation : portrait) {
+{
 body {
   margin: auto;
 }
@@ -412,7 +411,7 @@ h1, h2 {
   font-size: 20px;
 }
 h2.board-name{
-  font-size: 25px;
+  font-size: 20px;
 }
 .collapse-container{
   transform: translateX(3px);
