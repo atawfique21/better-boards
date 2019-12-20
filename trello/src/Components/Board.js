@@ -25,7 +25,7 @@ function Board(props) {
             {(provided, snapshot) => (
               <Container
                 key={task.id}
-                className="task"
+                className="task taskFull"
                 id={task.id}
                 onClick={(e) => props.onTaskClick(e, task.id)}
                 {...provided.draggableProps}

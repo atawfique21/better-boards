@@ -420,13 +420,21 @@ h2.board-name{
   min-width: 350px;
   max-width: 350px;
 }
-.widget{
-  
-}
+
 .widget-name{
   font-size: 10px;
 }
 .widget-components {
   font-size: 10px;
+}
+}
+
+@media only screen 
+  and (min-device-width: 768px) 
+  and (max-device-width: 1024px) 
+  and (-webkit-min-device-pixel-ratio: 2) {
+div.board {
+  min-width: 750px;
+  max-width: 750px;
 }
 }
