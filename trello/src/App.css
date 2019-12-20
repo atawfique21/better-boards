@@ -60,6 +60,7 @@ h2.board-name {
   background-color: transparent;
   font-size: 40px;
   color: #e5f0f5;
+  transform: translateY(5px);
 }
 
 .collapse-container {
